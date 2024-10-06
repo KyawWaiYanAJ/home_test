@@ -1,5 +1,5 @@
 resource "hcp_hvn" "vault_hvn" {
-  hvn_id         = "corhort7"
+  hvn_id         = "SecureOps"
   cloud_provider = var.cloud_provider
   region         = var.region
   cidr_block     = var.cidr_block
