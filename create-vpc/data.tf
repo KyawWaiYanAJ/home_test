@@ -1,8 +1,8 @@
-data "aws_availability_zone" "azs" {
+data "aws_availability_zones" "azs" {
   state = "available"
 }
 
-data "vault_aws_access_credentials" "creds" {
-  backend = "aws-master-account"
-  role    = "admin-access-role"
-}
+# data "vault_aws_access_credentials" "creds" {
+#   backend = "aws-dev"
+#   role    = "admin-access-role"
+# }
