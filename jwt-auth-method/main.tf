@@ -64,7 +64,7 @@ resource "vault_jwt_auth_backend_role" "tfc_admin_role" {
   bound_audiences = ["vault.workload.identity"]
   bound_claims_type = "glob"
   bound_claims = {
-    sub = "organization:hellocloud-corhort7:project:Default Project:workspace:hellocloud-cohort7:run_phase:*"
+    sub = "organization:Secure_Ops:project:SecureOps:workspace:jwt_auth_method:run_phase:*"
   }
   user_claim = "terraform_full_workspace"
   role_type  = "jwt"
