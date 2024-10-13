@@ -28,12 +28,11 @@ resource "tfe_variable" "tfc_vault_role" {
   category = "env"
   description = "The Vault role runs will use to authenticate."
 }
-resource "tfe_variable" "tfc_vault_namespace" {
+resource "tfe_variable" "aws_region" {
   workspace_id = data.tfe_workspace.my_workspace.id
-  key      = "TFC_VAULT_NAMESPACE"
-  value    = var.vault_namespace
+  key      = "AWS_REGION"
+  value    = "ap-southeast-1"
   category = "env"
-  description = "Namespace that contains the AWS Secrets Engine."
 }
 
 
