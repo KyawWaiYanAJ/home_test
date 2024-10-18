@@ -153,4 +153,8 @@ resource "aws_db_subnet_group" "db_subnet_group" {
   tags = {
     Name = "Database Subnet Group"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a8b536d4cb37a5e8747d1a094c988cf1576ed0e1
