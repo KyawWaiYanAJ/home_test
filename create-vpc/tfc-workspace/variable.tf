@@ -6,12 +6,12 @@ variable "workspace_name" {
 variable "org_name" {
   description = "Organization Name"
   type = string
-  default = "hellocloud-eem"
+  default = "SecureOps"
 }
 variable "vault_url" {
   description = "The address of the Vault instance runs will access."
   type = string
-  default = "https://vault-cluster-id-public-vault-2a5d42b2.18e736ba.z1.hashicorp.cloud:8200" ### have to change new vault cluster id
+  default = https://SecureOps-public-vault-5bcbfee8.02b80f18.z1.hashicorp.cloud:8200" ### have to change new vault cluster id
 }
 variable "run_role" {
   description = "TFC_VAULT_RUN_ROLE"
@@ -46,5 +46,5 @@ variable "tfc_vault_backed_aws_run_vault_role" {
 variable "tfc_vault_backed_aws_mount_path" {
   description = "TFC_VAULT_BACKED_AWS_MOUNT_PATH"
   type = string
-  default = "aws-dev"
+  default = "aws-master-account"
 }
