@@ -23,3 +23,9 @@ variable "vault_namespace" {
   type = string
   default = "admin"
 }
+
+variable "aws_region" {
+  description = "AWS_REGION"
+  type = string
+  default = "ap-southeast-1"
+}
