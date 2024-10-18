@@ -16,7 +16,7 @@ variable "vault_url" {
 variable "run_role" {
   description = "TFC_VAULT_RUN_ROLE"
   type = string
-  default = "admin-access-role"
+  default = "admin-role"
 }
 variable "vault_namespace" {
   description = "TFC_VAULT_NAMESPACE"
