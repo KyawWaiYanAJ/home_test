@@ -108,3 +108,48 @@ resource "aws_route" "private_route" {
   destination_cidr_block    = "0.0.0.0/0"
   gateway_id = aws_nat_gateway.nat_gateway.id
 }
+
+# Create database subnets for application resources
+resource "aws_subnet" "db_subnet" {
+  count = length(var.db_cidr_block)
+  vpc_id     = aws_vpc.app_vpc.id
+  cidr_block = var.db_cidr_block[count.index]
+  availability_zone = data.aws_availability_zones.azs.names[count.index]
+
+  tags = {
+    Name = "db-subnet-${element(data.aws_availability_zones.azs.names, count.index)}"
+  }
+}
+
+# Create a route table for database subnets
+resource "aws_route_table" "db_route_table" {
+  vpc_id = aws_vpc.app_vpc.id
+
+  tags = {
+    Name = "db-route-table"
+  }
+}
+
+# Associate database subnets with the database route table
+resource "aws_route_table_association" "db_subnet_association" {
+  count = length(var.db_cidr_block)
+  subnet_id      = aws_subnet.db_subnet[count.index].id
+  route_table_id = aws_route_table.db_route_table.id
+}
+
+# Create a route for the database subnets to allow outbound traffic through the NAT Gateway
+resource "aws_route" "db_route" {
+  route_table_id            = aws_route_table.db_route_table.id
+  destination_cidr_block    = "0.0.0.0/0"
+  gateway_id = aws_nat_gateway.nat_gateway.id
+}
+
+# Create a DB subnet group for RDS
+resource "aws_db_subnet_group" "db_subnet_group" {
+  name       = "db-subnet-group"
+  subnet_ids = aws_subnet.db_subnet[*].id
+
+  tags = {
+    Name = "Database Subnet Group"
+  }
+}
