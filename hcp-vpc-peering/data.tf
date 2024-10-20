@@ -4,7 +4,7 @@ data "terraform_remote_state" "vpc" {
   config = {
     organization = "Secure_Ops"
     workspaces = {
-      name = "create-vpc"
+      name = "create_vpc"
     }
   }
 }
