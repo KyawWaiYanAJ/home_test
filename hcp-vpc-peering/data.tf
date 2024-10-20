@@ -2,9 +2,9 @@
 data "terraform_remote_state" "vpc" {
   backend = "remote"
   config = {
-    organization = "hellocloud-eem"
+    organization = "Secure_Ops"
     workspaces = {
-      name = "create-vpc-day3"
+      name = "create-vpc"
     }
   }
 }
